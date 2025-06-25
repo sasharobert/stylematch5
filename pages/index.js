@@ -8,11 +8,13 @@ export default function Home() {
     офис: ["Рубашка", "Брюки", "Лоферы"],
     спорт: ["Худи", "Легинсы", "Кроссовки"],
     вечеринка: ["Платье", "Туфли", "Клатч"],
-    повседневно: ["Футболка", "Джинсы", "Кеды"]
+    повседневно: ["Футболка", "Джинсы", "Кеды"],
   };
 
   const generate = () => {
-    const key = Object.keys(looks).find(k => text.toLowerCase().includes(k));
+    const key = Object.keys(looks).find(k =>
+      text.toLowerCase().includes(k)
+    );
     setItems(looks[key] || looks["повседневно"]);
   };
 
@@ -26,7 +28,10 @@ export default function Home() {
         style={{ padding: "0.5rem", width: "300px", marginBottom: "1rem" }}
       />
       <br />
-      <button onClick={generate} style={{ padding: "0.5rem 1rem", cursor: "pointer" }}>
+      <button
+        onClick={generate}
+        style={{ padding: "0.5rem 1rem", cursor: "pointer" }}
+      >
         Подобрать образ
       </button>
       <ul style={{ marginTop: "2rem", listStyle: "none", padding: 0 }}>
