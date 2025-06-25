@@ -34,6 +34,6 @@ export default function Home() {
           <li key={i}>✔️ {item}</li>
         ))}
       </ul>
-    </div>
+  </div>
   );
 }
