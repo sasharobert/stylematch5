@@ -1,47 +1,38 @@
 import { useState } from "react";
 
 export default function Home() {
-  const [occasion, setOccasion] = useState("");
-  const [look, setLook] = useState(null);
+  const [text, setText] = useState("");
+  const [items, setItems] = useState([]);
 
-  const outfits = {
-    casual: ["Футболка", "Джинсы", "Кеды"],
-    office: ["Рубашка", "Брюки", "Лоферы"],
-    party: ["Платье", "Туфли", "Клатч"],
-    sport: ["Худи", "Легинсы", "Кроссовки"]
+  const looks = {
+    офис: ["Рубашка", "Брюки", "Лоферы"],
+    спорт: ["Худи", "Легинсы", "Кроссовки"],
+    вечеринка: ["Платье", "Туфли", "Клатч"],
+    повседневно: ["Футболка", "Джинсы", "Кеды"]
   };
 
-  const handleGenerate = () => {
-    const key = Object.keys(outfits).find(k =>
-      occasion.toLowerCase().includes(k)
-    ) || "casual";
-    setLook(outfits[key]);
+  const generate = () => {
+    const key = Object.keys(looks).find(k => text.toLowerCase().includes(k));
+    setItems(looks[key] || looks["повседневно"]);
   };
 
   return (
     <div style={{ padding: "2rem", fontFamily: "sans-serif", textAlign: "center" }}>
       <h1>StyleMatch MVP</h1>
-      <p>Введите повод (офис, спорт...)</p>
       <input
-        value={occasion}
-        onChange={(e) => setOccasion(e.target.value)}
-        placeholder="Куда вы идёте?"
-        style={{ padding: "0.5rem", borderRadius: "5px", border: "1px solid #ccc" }}
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        placeholder="Например: офис, спорт, вечеринка..."
+        style={{ padding: "0.5rem", width: "300px", marginBottom: "1rem" }}
       />
       <br />
-      <button
-        onClick={handleGenerate}
-        style={{ marginTop: "1rem", padding: "0.5rem 1rem" }}
-      >
+      <button onClick={generate} style={{ padding: "0.5rem 1rem" }}>
         Подобрать образ
       </button>
-      {look && (
-        <ul style={{ marginTop: "1.5rem", listStyle: "none", padding: 0 }}>
-          {look.map((item, i) => (
-            <li key={i}>✔️ {item}</li>
-          ))}
-        </ul>
-      )}
+      <ul style={{ marginTop: "2rem", listStyle: "none", padding: 0 }}>
+        {items.map((item, i) => (
+          <li key={i}>✔️ {item}</li>
+        ))}
+      </ul>
     </div>
   );
-}
