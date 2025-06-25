@@ -26,7 +26,7 @@ export default function Home() {
         style={{ padding: "0.5rem", width: "300px", marginBottom: "1rem" }}
       />
       <br />
-      <button onClick={generate} style={{ padding: "0.5rem 1rem" }}>
+      <button onClick={generate} style={{ padding: "0.5rem 1rem", cursor: "pointer" }}>
         Подобрать образ
       </button>
       <ul style={{ marginTop: "2rem", listStyle: "none", padding: 0 }}>
@@ -34,6 +34,6 @@ export default function Home() {
           <li key={i}>✔️ {item}</li>
         ))}
       </ul>
-  </div>
+    </div>
   );
 }
